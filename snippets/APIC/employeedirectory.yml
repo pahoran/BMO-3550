@@ -1,0 +1,137 @@
+swagger: '2.0'
+info:
+  x-ibm-name: employeedirectory
+  title: EmployeeDirectory
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+  clientSecretHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Secret
+security:
+  - clientIdHeader: []
+  - clientSecretHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - employee.findAll
+              execute:
+                - invoke:
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empList?limit=20&reduce=false'
+                    title: getEmployees
+                    description: Find all employees
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    verb: GET
+                    compression: true
+            - operations:
+                - employee.upsert
+              execute:
+                - invoke:
+                    title: updateEmployee
+                    timeout: 60
+                    verb: PUT
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.body._id)'
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+            - operations:
+                - employee.findByID
+              execute:
+                - invoke:
+                    title: findByID
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.parameters.id)'
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+            - operations:
+                - employee.getFavorites
+              execute:
+                - invoke:
+                    title: getFavorites
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empFavorites?limit=20&reduce=false'
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+          otherwise: []
+          version: 1.0.0
+  phase: realized
+paths:
+  /employees/favorites:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: employee.getFavorites
+  '/employees/{id}':
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: employee.findByID
+      parameters:
+        - name: id
+          type: string
+          required: true
+          in: path
+  /employees:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: employee.findAll
+      description: 'Retrieves a list of all Employees, with a shorter attribute list.'
+    post:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: employee.create
+      parameters:
+        - name: data
+          required: true
+          in: body
+          schema:
+            type: object
+    put:
+      responses:
+        '200':
+          description: 200 OK
+      operationId: employee.upsert
+      parameters:
+        - name: data
+          required: true
+          in: body
+          schema:
+            type: object
+definitions: {}
+tags: []
