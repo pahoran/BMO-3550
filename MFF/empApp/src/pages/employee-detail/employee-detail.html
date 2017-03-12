@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Employee Detail</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="employee">
+
+    <ion-card>
+
+        <ion-card-content>
+            <img src="{{employee.img}}" />
+        </ion-card-content>
+
+        <ion-list>
+            <ion-item>
+                <button ion-button item-left icon-left large clear (click)="toggleFavorite(employee)">
+                    <ion-icon [name]="employee.favorite == 'yes' ? 'star' : 'star-outline'"></ion-icon>
+                </button>
+                <h2><b>{{employee.first_name}} {{employee.last_name}}</b></h2>
+                <h3>{{employee.job_title}}</h3>
+            </ion-item>
+            <a ion-item>
+                <ion-icon name="home" item-left></ion-icon>
+                <p>Address</p>
+                <h2>{{employee.address}}</h2>
+            </a>
+            <a href="tel:{{employee.mobile}}" ion-item>
+                <ion-icon name="call" item-left></ion-icon>
+                <p>Call Mobile</p>
+                <h2>{{employee.mobile}}</h2>
+            </a>
+            <a href="mailto:{{employee.email}}" ion-item>
+                <ion-icon name="mail" item-left></ion-icon>
+                <p>Email</p>
+                <h2>{{employee.email}}</h2>
+            </a>
+        </ion-list>
+
+    </ion-card>
+
+</ion-content>

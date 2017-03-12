@@ -1,0 +1,31 @@
+product: 1.0.0
+info:
+  name: employeeapis
+  title: EmployeeAPIs
+  version: 1.0.0
+visibility:
+  view:
+    enabled: true
+    type: public
+    tags: []
+    orgs: []
+  subscribe:
+    enabled: true
+    type: authenticated
+    tags: []
+    orgs: []
+apis:
+  employeedirectory:
+    id: 58c2fb4c0cf2d49d10f09dfe
+plans:
+  unlimitedPlan:
+    title: Unlimited Plan
+    approval: true
+    apis: {}
+  basicPlan:
+    title: Basic Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      hard-limit: true
+      value: 200/1hour

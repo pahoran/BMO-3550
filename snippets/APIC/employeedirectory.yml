@@ -36,53 +36,55 @@ x-ibm-configuration:
             - operations:
                 - employee.findAll
               execute:
-                - invoke:
+                - proxy:
+                    title: findAll
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empList?limit=20&reduce=false'
-                    title: getEmployees
-                    description: Find all employees
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
-                    verb: GET
-                    compression: true
-            - operations:
-                - employee.upsert
-              execute:
-                - invoke:
-                    title: updateEmployee
-                    timeout: 60
-                    verb: PUT
-                    cache-response: protocol
-                    cache-ttl: 900
-                    version: 1.0.0
-                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.body._id)'
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
-            - operations:
-                - employee.findByID
-              execute:
-                - invoke:
-                    title: findByID
-                    timeout: 60
-                    verb: GET
-                    cache-response: protocol
-                    cache-ttl: 900
-                    version: 1.0.0
-                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.parameters.id)'
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
             - operations:
                 - employee.getFavorites
               execute:
-                - invoke:
+                - proxy:
                     title: getFavorites
                     timeout: 60
-                    verb: GET
+                    verb: keep
                     cache-response: protocol
                     cache-ttl: 900
                     version: 1.0.0
-                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empFavorites?limit=20&reduce=false'
                     username: yingraltledsivedshernfiz
                     password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empFavorites?limit=20&reduce=false'
+            - operations:
+                - employee.findByID
+              execute:
+                - proxy:
+                    title: findByID
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.parameters.id)'
+            - operations:
+                - employee.upsert
+              execute:
+                - proxy:
+                    title: upsert
+                    timeout: 60
+                    verb: keep
+                    cache-response: protocol
+                    cache-ttl: 900
+                    version: 1.0.0
+                    username: yingraltledsivedshernfiz
+                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.body._id)'
           otherwise: []
           version: 1.0.0
   phase: realized
