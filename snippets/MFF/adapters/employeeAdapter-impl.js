@@ -10,8 +10,8 @@
  * @returns json list of items.
  */
 
-var CLIENT_ID = '0fa034db-a1b0-4212-b665-266b5ebc0ed3'
-var CLIENT_SECRET = 'D5uL0wC0yE5eC8nN0tP6tV3wY1dM6fE4bY4xS2sS4aN0sM2xU3'
+var CLIENT_ID = '<Your Value Here>'
+var CLIENT_SECRET = '<Your Value Here>'
 var ACCEPT = 'application/json'
 var JSON_CONTENT_TYPE = 'application/json'
 var URLENCODED_CONTENT_TYPE = 'application/x-www-form-urlencoded'
@@ -20,7 +20,7 @@ var POST = 'post'
 var GET = 'get'
 var PUT = 'put'
 var DELETE = 'delete'
-var BASE_URL = '/pahoranusibmcom-ic2017/employeecatalog/employees'
+var BASE_URL = '<Your BASE_URL here>'
 var INPUT = {
     method: this.GET,
     returnedContentType: JSON,
