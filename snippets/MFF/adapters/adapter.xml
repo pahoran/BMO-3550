@@ -23,9 +23,9 @@
 		</connectionPolicy>
 	</connectivity>
 
-	<procedure name="getEmployees" scope="restrictedData"/>
-	<procedure name="getEmployeeDetail" scope="restrictedData"/>
-	<procedure name="getFavorites" scope="restrictedData"/>
-	<procedure name="updateEmployee" scope="restrictedData"/>
+	<procedure name="getEmployees" secured="false"/>
+	<procedure name="getEmployeeDetail" secured="false"/>
+	<procedure name="getFavorites" secured="false"/>
+	<procedure name="updateEmployee" secured="false"/>
 
 </mfp:adapter>
