@@ -12,11 +12,15 @@ export class HomePage {
 
   employees: {};
 
-  constructor(public navCtrl: NavController, public employeeService: EmployeeService) {
-    employeeService.findAll().then(data => this.employees = data);
-  }
+  constructor(public navCtrl: NavController, public employeeService: EmployeeService) { }
 
-    openEmployeeDetail(employee) {
-        this.navCtrl.push(EmployeeDetailPage, employee);
-    }
+  ionViewDidEnter() {
+    this.employeeService.findAll().then(
+      (data) => { this.employees = data }
+    );
+  };
+
+  openEmployeeDetail(employee) {
+    this.navCtrl.push(EmployeeDetailPage, employee);
+  }
 }

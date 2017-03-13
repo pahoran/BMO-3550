@@ -13,7 +13,7 @@ export class EmployeeDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public employeeService: EmployeeService) {
     this.employee = this.navParams.data;
-    employeeService.findById(this.employee._id).then(
+    employeeService.findById(this.employee.id).then(
       (employee) => {this.employee = employee}
     );
   }
@@ -28,5 +28,8 @@ export class EmployeeDetailPage {
     } else {
       employee.favorite = "yes"
     }
+    this.employeeService.save(employee._id, employee.favorite).then(
+      ()=>{}, (error)=>{console.log('---> failed to save in toggleFavorite' + error)}
+    )
   }
 }

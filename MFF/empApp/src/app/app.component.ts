@@ -1,5 +1,5 @@
 import { Component, Renderer } from '@angular/core';
-import { Platform, AlertController } from 'ionic-angular';
+import { Platform, AlertController, App } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -10,26 +10,29 @@ import { TabsPage } from '../pages/tabs/tabs';
 })
 export class MyApp {
   private rootPage: any;
-  AuthHandler: any;
+  private AuthHandler: any;
+  private nav: any;
 
-  constructor(platform: Platform, public renderer: Renderer, public alertCtrl: AlertController) {
-
-    renderer.listenGlobal('document', 'mfpjsloaded', () => {
-      console.log('--> mfpjsloaded has fired');
-
-      this.AuthInit();
-
-      this.rootPage = TabsPage;
-
-    })
+  constructor(platform: Platform, public renderer: Renderer, private app: App, public alertCtrl: AlertController) {
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-
     });
+
+    renderer.listenGlobal('document', 'mfpjsloaded', () => {
+      console.log('--> mfpjsloaded has fired');
+
+      this.rootPage = TabsPage;
+      this.nav = this.app.getActiveNav();
+      this.nav.setRoot( this.rootPage );
+
+      this.AuthInit();
+
+    })
+
   }
 
   AuthInit() {
