@@ -20,7 +20,7 @@ var POST = 'post'
 var GET = 'get'
 var PUT = 'put'
 var DELETE = 'delete'
-var BASE_URL = '/pahoranusibmcom-ic2017/employeecatalog/employees'
+var BASE_URL = '<Your BASE_URL here>'
 var INPUT = {
     method: this.GET,
     returnedContentType: JSON,
