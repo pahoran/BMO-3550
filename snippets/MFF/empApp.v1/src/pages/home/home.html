@@ -4,6 +4,16 @@
             <ion-icon name="menu"></ion-icon>
         </button>
         <ion-title>Employee List</ion-title>
+
+        <ion-segment [(ngModel)]="filter" (ionChange)="toggleFavorites()">
+            <ion-segment-button value="all">
+                All
+            </ion-segment-button>
+            <ion-segment-button value="favorites">
+                Favorites
+            </ion-segment-button>
+        </ion-segment>
+
     </ion-navbar>
 </ion-header>
 
