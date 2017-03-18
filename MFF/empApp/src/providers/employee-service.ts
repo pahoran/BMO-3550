@@ -39,6 +39,24 @@ export class EmployeeService {
 
   }
 
+  getFavorites() {
+    console.log('--> in employeeService.getFavorites()');
+    let favorites: Array<any>;
+
+    return new Promise(resolve => {
+      let dataRequest = new WLResourceRequest("/adapters/employeeAdapter/getFavorites", WLResourceRequest.GET);
+      dataRequest.send().then((response) => {
+        console.log('--> data loaded from employeeAdapter.getFavorites()');
+        favorites = response.responseJSON.rows;
+        resolve(favorites);
+      }, (failure) => {
+        console.log( '--> failed in employeeService.getFavorites()', failure);
+        resolve('error');
+      })
+    })
+    
+  }
+
   findById(id) {
     console.log('--> in employeeService.findById( ' + id + ')');
 
