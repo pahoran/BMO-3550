@@ -9,6 +9,7 @@ class Employee {
     public address: string,
     public job_title: string,
     public email: string,
+    public mobile: string,
     public fax: string,
     public img: string,
     public favorite: string) { }
@@ -77,6 +78,7 @@ export class EmployeeService {
           JSONResponse.address,
           JSONResponse.job_title,
           JSONResponse.email,
+          JSONResponse.mobile,
           JSONResponse.fax,
           JSONResponse.img,
           JSONResponse.favorite);
