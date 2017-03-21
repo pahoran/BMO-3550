@@ -10,8 +10,8 @@
  * @returns json list of items.
  */
 
-var CLIENT_ID = '0fa034db-a1b0-4212-b665-266b5ebc0ed3'
-var CLIENT_SECRET = 'D5uL0wC0yE5eC8nN0tP6tV3wY1dM6fE4bY4xS2sS4aN0sM2xU3'
+var CLIENT_ID = 'a7f13e5a-5fc7-4a8f-946e-9071845026bb'
+var CLIENT_SECRET = 'E4oO6lP8fP3rI1bK6xC8cF3nP4xS8jE6wQ6bM4vK8bR3cY5oG5'
 var ACCEPT = 'application/json'
 var JSON_CONTENT_TYPE = 'application/json'
 var URLENCODED_CONTENT_TYPE = 'application/x-www-form-urlencoded'

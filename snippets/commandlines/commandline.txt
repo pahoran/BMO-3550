@@ -1,0 +1,7 @@
+cd Documents/IBM/Conferences/IC2017/src/Cloudant
+
+DB=<paste>
+curl -H "Content-Type:application/json" -d @employees.json -X POST "$DB/employees/_bulk_docs"
+
+yingraltledsivedshernfiz
+99543b2f19bae7bfeb5f8f08f41b934620888743

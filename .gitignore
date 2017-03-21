@@ -2,7 +2,6 @@
 # http://git-scm.com/docs/gitignore
 
 MFF/**/node_modules/
-MFF/**/www/
 MFF/**/platforms/
 MFF/**/plugins/
 MFF/**/.vscode/**
