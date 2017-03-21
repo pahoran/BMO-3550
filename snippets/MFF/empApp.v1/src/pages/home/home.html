@@ -5,22 +5,20 @@
         </button>
         <ion-title>Employee List</ion-title>
 
-        <ion-segment [(ngModel)]="filter" (ionChange)="toggleFavorites()">
-            <ion-segment-button value="all">
-                All
-            </ion-segment-button>
-            <ion-segment-button value="favorites">
-                Favorites
-            </ion-segment-button>
-        </ion-segment>
-
     </ion-navbar>
 </ion-header>
 
 <ion-content>
+    <ion-segment [(ngModel)]="filter" (ionChange)="toggleFavorites()">
+        <ion-segment-button value="all">
+            All
+        </ion-segment-button>
+        <ion-segment-button value="favorites">
+            Favorites
+        </ion-segment-button>
+    </ion-segment>
 
     <ion-list>
-
         <button ion-item *ngFor="let employee of employees" (click)="openEmployeeDetail(employee)">
             <ion-avatar item-left>
                 <img src="{{employee.img}}"/>
