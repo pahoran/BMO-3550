@@ -46,6 +46,129 @@ x-ibm-configuration:
                     username: yingraltledsivedshernfiz
                     password: 99543b2f19bae7bfeb5f8f08f41b934620888743
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empList?limit=20&reduce=false'
+                    output: empList
+                - map:
+                    title: map
+                    inputs:
+                      empList:
+                        schema:
+                          description: ''
+                          type: object
+                          properties:
+                            total_rows:
+                              type: number
+                            offset:
+                              type: number
+                            rows:
+                              type: array
+                              items:
+                                properties:
+                                  id:
+                                    type: string
+                                  key:
+                                    type: string
+                                  value:
+                                    type: object
+                                    properties:
+                                      first_name:
+                                        type: string
+                                      last_name:
+                                        type: string
+                                      title:
+                                        type: string
+                                      email:
+                                        type: string
+                                      img:
+                                        type: string
+                                      favorite:
+                                        type: string
+                                type: object
+                          example: |-
+                            {
+                                "total_rows": 10,
+                                "offset": 0,
+                                "rows": [
+                                    {
+                                        "id": "",
+                                        "key": "",
+                                        "value": {
+                                            "first_name": "",
+                                            "last_name": "",
+                                            "title": "",
+                                            "email": "",
+                                            "img": "",
+                                            "favorite": ""
+                                        }
+                                    }
+                                ]
+                            }
+                        variable: empList.body
+                        content: application/json
+                    outputs:
+                      output:
+                        schema:
+                          description: ''
+                          type: object
+                          properties:
+                            data:
+                              type: array
+                              items:
+                                properties:
+                                  id:
+                                    type: string
+                                  key:
+                                    type: string
+                                  first_name:
+                                    type: string
+                                  last_name:
+                                    type: string
+                                  title:
+                                    type: string
+                                  email:
+                                    type: string
+                                  img:
+                                    type: string
+                                  favorite:
+                                    type: string
+                                type: object
+                          example: |-
+                            {
+                              "data": [
+                                {
+                                  "id": "01800211",
+                                  "key": "10-2fab6486ae3f1f20985d4582c155d53a",
+                                    "first_name": "Lisa",
+                                    "last_name": "Wong",
+                                    "title": "Marketing Manager",
+                                    "email": "Lise.Wong@ibm.com",
+                                    "img": "",
+                                    "favorite": "no"
+                                }
+                            ]
+                            }
+                        variable: message.body
+                    actions:
+                      - create: output.data
+                        foreach: empList.rows
+                        from: empList.rows
+                        actions:
+                          - set: id
+                            from: id
+                          - set: key
+                            from: key
+                          - set: first_name
+                            from: value.first_name
+                          - set: last_name
+                            from: value.last_name
+                          - set: title
+                            from: value.title
+                          - set: email
+                            from: value.email
+                          - set: img
+                            from: value.img
+                          - set: favorite
+                            from: value.favorite
+                    version: 1.0.0
             - operations:
                 - employee.getFavorites
               execute:
@@ -59,6 +182,130 @@ x-ibm-configuration:
                     username: yingraltledsivedshernfiz
                     password: 99543b2f19bae7bfeb5f8f08f41b934620888743
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empFavorites?limit=20&reduce=false'
+                    output: empFavorites
+                - map:
+                    title: map
+                    inputs:
+                      empFavorites:
+                        schema:
+                          description: ''
+                          type: object
+                          properties:
+                            total_rows:
+                              type: number
+                            offset:
+                              type: number
+                            rows:
+                              type: array
+                              items:
+                                properties:
+                                  id:
+                                    type: string
+                                  key:
+                                    type: string
+                                  value:
+                                    type: object
+                                    properties:
+                                      first_name:
+                                        type: string
+                                      last_name:
+                                        type: string
+                                      title:
+                                        type: string
+                                      email:
+                                        type: string
+                                      img:
+                                        type: string
+                                      favorite:
+                                        type: string
+                                type: object
+                          example: |-
+                            {
+                              "total_rows": 0,
+                              "offset": 0,
+                              "rows": [
+                                {
+                                  "id": "",
+                                  "key": "",
+                                  "value": {
+                                    "first_name": "",
+                                    "last_name": "",
+                                    "title": "",
+                                    "email": "",
+                                    "img": "",
+                                    "favorite": ""
+                                  }
+                                }
+                             ]
+                            }
+                        variable: empFavorites.body
+                        content: application/json
+                    outputs:
+                      output:
+                        schema:
+                          description: ''
+                          type: object
+                          properties:
+                            data:
+                              type: array
+                              items:
+                                properties:
+                                  id:
+                                    type: string
+                                  key:
+                                    type: string
+                                  first_name:
+                                    type: string
+                                  last_name:
+                                    type: string
+                                  title:
+                                    type: string
+                                  email:
+                                    type: string
+                                  img:
+                                    type: string
+                                  favorite:
+                                    type: string
+                                type: object
+                          example: |-
+                            {
+                              "data": [
+                                {
+                                  "id": "",
+                                  "key": "",
+                                  "first_name": "",
+                                  "last_name": "",
+                                  "title": "",
+                                  "email": "",
+                                  "img": "",
+                                  "favorite": ""
+                                }
+                             ]
+                            }
+                        variable: message.body
+                        content: application/json
+                    actions:
+                      - create: output.data
+                        foreach: empFavorites.rows
+                        from: empFavorites.rows
+                        actions:
+                          - set: id
+                            from: id
+                          - set: key
+                            from: key
+                          - set: first_name
+                            from: value.first_name
+                          - set: last_name
+                            from: value.last_name
+                          - set: title
+                            from: value.title
+                          - set: email
+                            from: value.email
+                          - set: img
+                            from: value.img
+                          - set: favorite
+                            from: value.favorite
+                    version: 1.0.0
             - operations:
                 - employee.findByID
               execute:

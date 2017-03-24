@@ -30,7 +30,7 @@ export class EmployeeService {
       let dataRequest = new WLResourceRequest("/adapters/employeeAdapter/getEmployees", WLResourceRequest.GET);
       dataRequest.send().then((response) => {
         console.log('--> data loaded from employeeAdapter');
-        employees = response.responseJSON.rows;
+        employees = response.responseJSON.data;
         resolve(employees);
       }, (failure) => {
         console.log('--> failed to load from employeeAdapter', failure);
@@ -48,7 +48,7 @@ export class EmployeeService {
       let dataRequest = new WLResourceRequest("/adapters/employeeAdapter/getFavorites", WLResourceRequest.GET);
       dataRequest.send().then((response) => {
         console.log('--> data loaded from employeeAdapter.getFavorites()');
-        favorites = response.responseJSON.rows;
+        favorites = response.responseJSON.data;
         resolve(favorites);
       }, (failure) => {
         console.log( '--> failed in employeeService.getFavorites()', failure);

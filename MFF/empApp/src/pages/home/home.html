@@ -21,12 +21,12 @@
 
         <button ion-item *ngFor="let employee of employees" (click)="openEmployeeDetail(employee)">
             <ion-avatar item-left>
-                <img src="{{employee.value.img}}"/>
+                <img src="{{employee.img}}"/>
             </ion-avatar>
-            <ion-icon [name]="employee.value.favorite == 'yes' ? 'star' : 'star-outline'" item-left>
+            <ion-icon [name]="employee.favorite == 'yes' ? 'star' : 'star-outline'" item-left>
                 </ion-icon>
-            <h2>{{employee.value.first_name}} {{employee.value.last_name}}</h2>
-            <p>{{employee.value.job_title}}</p>
+            <h2>{{employee.first_name}} {{employee.last_name}}</h2>
+            <p>{{employee.job_title}}</p>
         </button>
 
     </ion-list>
