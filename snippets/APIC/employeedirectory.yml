@@ -43,8 +43,8 @@ x-ibm-configuration:
                     cache-response: protocol
                     cache-ttl: 900
                     version: 1.0.0
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    username: removed
+                    password: removed
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empList?limit=20&reduce=false'
                     output: empList
                 - map:
@@ -179,8 +179,8 @@ x-ibm-configuration:
                     cache-response: protocol
                     cache-ttl: 900
                     version: 1.0.0
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    username: removed
+                    password: removed
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/_design/employeeList/_view/empFavorites?limit=20&reduce=false'
                     output: empFavorites
                 - map:
@@ -316,8 +316,8 @@ x-ibm-configuration:
                     cache-response: protocol
                     cache-ttl: 900
                     version: 1.0.0
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    username: removed
+                    password: removed
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.parameters.id)'
             - operations:
                 - employee.upsert
@@ -329,8 +329,8 @@ x-ibm-configuration:
                     cache-response: protocol
                     cache-ttl: 900
                     version: 1.0.0
-                    username: yingraltledsivedshernfiz
-                    password: 99543b2f19bae7bfeb5f8f08f41b934620888743
+                    username: removed
+                    password: removed
                     target-url: 'https://13b60417-e7ae-4224-b5a5-51a3d74574b4-bluemix.cloudant.com/employees/$(request.body._id)'
           otherwise: []
           version: 1.0.0
